@@ -54,7 +54,6 @@ Y_nocens=scipy.sparse.coo_matrix(Dmat)
 
 #Side information
 ecfp=scipy.io.mmread("./outputs/chembl_23/ecfp.mtx")
-print(coucou)
 result=macau.macau(Y=Y,Ytest=Ytest,side=[ecfp,None], num_latent=latents,precision=alpha,burnin=burn,nsamples=samples)
 result2=macau.macau(Y=Y_nocens,Ytest=Ytest,side=[ecfp,None],num_latent=latents,precision=alpha,burnin=burn,nsamples=samples)
 
