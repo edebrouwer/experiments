@@ -8,7 +8,7 @@ import macau
 
 #Test Parameters
 test_prop=0.1
-latents=20
+latents=32
 alpha=5.0
 burn=400
 samples=1600
