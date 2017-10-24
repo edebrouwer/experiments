@@ -13,7 +13,7 @@ alpha=5.0
 burn=400
 samples=1600
 
-df=pd.read_csv("./outputs/CHEM23/CHEM23_pic50_cens.csv").dropna()
+df=pd.read_csv("./outputs/chembl_23/chembl_23_pic50_cens.csv").dropna()
 
 #df["test"]=0
 #df.loc[df["cens"]==0].sample(frac=0.9)["test"]=1
@@ -53,8 +53,8 @@ Y_nocens=scipy.sparse.coo_matrix(Dmat)
 
 
 #Side information
-ecfp=scipy.io.mmread("./outputs/CHEM23/ecfp.mtx")
-
+ecfp=scipy.io.mmread("./outputs/chembl_23/ecfp.mtx")
+print(coucou)
 result=macau.macau(Y=Y,Ytest=Ytest,side=[ecfp,None], num_latent=latents,precision=alpha,burnin=burn,nsamples=samples)
 result2=macau.macau(Y=Y_nocens,Ytest=Ytest,side=[ecfp,None],num_latent=latents,precision=alpha,burnin=burn,nsamples=samples)
 
