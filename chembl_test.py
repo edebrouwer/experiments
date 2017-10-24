@@ -13,7 +13,6 @@ alpha=5.0
 burn=400
 samples=1600
 
-
 df=pd.read_csv("./outputs/CHEM23/CHEM23_pic50_cens.csv").dropna()
 
 #df["test"]=0
