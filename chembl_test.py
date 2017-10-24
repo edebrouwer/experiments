@@ -32,6 +32,7 @@ Dmat=D.pivot(index='cmpd_id',columns='target_id',values='pic50_cens').fillna(0)
 Dtest=Dmat[Test].fillna(0)
 Dmat[Test]=0
 
+
 #Make sparse
 Y=scipy.sparse.coo_matrix(Dmat)
 Ytest=scipy.sparse.coo_matrix(Dtest)
@@ -43,13 +44,14 @@ Cens=df[["cmpd_id","target_id","cens"]]
 Cmat=Cens.pivot(index='cmpd_id',columns='target_id',values='cens').fillna(0)
 C=scipy.sparse.coo_matrix(Cmat)
 
+#
+Dmat[Cmat.astype(bool)]=0
+Y_nocens=scipy.sparse.coo_matrix(Dmat)
+
 #Side information
 ecfp=scipy.io.mmread("./outputs/CHEM23/ecfp.mtx")
 
-
-print(Y.shape)
-print(ecfp.shape)
-result=macau.macau(Y=Y,Ytest=Ytest,side=[ecfp,None], num_latent=latents,precision=alpha,burnin=burn,nsamples=samples,C=C)
+result=macau.macau(Y=Y_nocens,Ytest=Ytest,side=[ecfp,None], num_latent=latents,precision=alpha,burnin=burn,nsamples=samples,C=C)
 result2=macau.macau(Y=Y,Ytest=Ytest,side=[ecfp,None],num_latent=latents,precision=alpha,burnin=burn,nsamples=samples)
 
 print(result)
