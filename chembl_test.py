@@ -13,7 +13,7 @@ alpha=5.0
 burn=400
 samples=1600
 
-df=pd.read_csv("./outputs/chembl_23/chembl_23_pic50_cens.csv").dropna()
+df=pd.read_csv("./outputs/chembl_23/chembl_23/chembl_23_pic50_cens.csv")
 
 #df["test"]=0
 #df.loc[df["cens"]==0].sample(frac=0.9)["test"]=1
